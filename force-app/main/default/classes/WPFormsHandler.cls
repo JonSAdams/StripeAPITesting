@@ -1,22 +1,14 @@
-@RestResource(urlMapping='/WPForms/*')
+@RestResource(urlMapping='/partnerprograminterest')
 global with sharing class WPFormsHandler {
-    private static final String SECRET_KEY = '0>{rPMi[HDF#o%p&uUC-ixHL]g`n5O3XF_Z`uQ?0R3bo27IA0yz}~$hvwENH{>%e';
-
+    
+    //private static final String SECRET_KEY = '0>{rPMi[HDF#o%p&uUC-ixHL]g`n5O3XF_Z`uQ?0R3bo27IA0yz}~$hvwENH{>%e';
+    //System.Debug(SECRET_KEY);
 
     @HttpPost
     global static void handlePost() {
         RestRequest req = RestContext.request;
-
-        String secret = req.headers.get('X-WPForms-Secret');
-        if (secret != SECRET_KEY) {
-            // Unauthorized access
-            
-            RestResponse res = RestContext.response;
-            res.statusCode = 401;
-            res.responseBody = Blob.valueOf('Unauthorized');
-            return;
-        }
-
+        RestRequest request = RestContext.request;
+        System.debug('MyService.newMessage body:\n ' + request.requestBody.toString());
         String requestBody = req.requestBody.toString();
         
         // Parse the JSON body
