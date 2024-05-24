@@ -1,4 +1,4 @@
-@RestResource(urlMapping='/StripeHandler')
+@RestResource(urlMapping='/stripehandler')
 global with sharing class stripeHandler {
     
     @HttpPost
