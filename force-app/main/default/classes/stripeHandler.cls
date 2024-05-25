@@ -15,8 +15,8 @@ global class stripeHandler {
         Map<String, Object> invoiceObject = (Map<String, Object>) data.get('object');
         
         String invoiceId = (String) invoiceObject.get('id');
-        Decimal amountPaid = ((Integer) invoiceObject.get('amount_paid')).decimalValue() / 100;
-        Decimal amountDue = ((Integer) invoiceObject.get('amount_due')).decimalValue() / 100;
+        Decimal amountPaid = (Decimal) invoiceObject.get('amount_paid') / 100;
+        Decimal amountDue = (Decimal) invoiceObject.get('amount_due') / 100;
         String customerName = (String) invoiceObject.get('customer_name');
         String customerEmail = (String) invoiceObject.get('customer_email');
         
@@ -34,7 +34,7 @@ global class stripeHandler {
                 invoice.Stripe_ID__c = invoiceId;
             }
 
-            invoice.Name = 'Invoice'+ customerEmail;
+            invoice.Name = 'Invoice: '+ customerEmail;
             invoice.Amount_Paid__c = amountPaid;
             invoice.Amount_Due__c = amountDue;
             invoice.Customer_Name__c = customerName;
