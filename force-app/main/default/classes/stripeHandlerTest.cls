@@ -3,7 +3,6 @@ private class stripeHandlerTest {
 
     @isTest
     static void testHandlePost() {
-        // Create test data for the request
         String requestBody = '{"type": "invoice.created", "data": {"object": {"id": "inv_123", "amount_paid": 2500, "amount_due": 5000, "customer_name": "Test Customer", "customer_email": "test@example.com"}}}';
         RestRequest request = new RestRequest();
         request.requestURI = '/services/apexrest/stripehandler';
@@ -11,12 +10,10 @@ private class stripeHandlerTest {
         request.requestBody = Blob.valueOf(requestBody);
         RestContext.request = request;
 
-        // Call the method to be tested
         Test.startTest();
         stripeHandler.handlePost();
         Test.stopTest();
 
-        // Verify the results
         List<Stripe_Invoice__c> invoices = [SELECT Id, Name, Amount_Paid__c, Amount_Due__c, Customer_Name__c, Customer_Email__c FROM Stripe_Invoice__c];
         System.assertEquals(1, invoices.size(), 'An invoice should have been created.');
 
