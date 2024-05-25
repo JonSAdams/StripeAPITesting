@@ -1,44 +1,40 @@
 @RestResource(urlMapping='/stripehandler')
 global with sharing class stripeHandler {
-    
     @HttpPost
     global static void handlePost() {
         RestRequest req = RestContext.request;
         System.debug('MyService.newMessage body:\n ' + req.requestBody.toString());
         String requestBody = req.requestBody.toString();
         
-        StripeEvent stripeEvent = (StripeEvent) JSON.deserialize(requestBody, StripeEvent.class);
-
-        System.debug(stripeEvent.type);
-    }
-    
-    global class StripeEvent {
-        public String id;  // evt_1PJQrCG2cXJyd3VGfaUHS2pJ
-        public String eventType;  // event
-        public String apiVersion;  // 2024-04-10
-        public Integer created;  // 1716429253
-        public Data data;
-        public boolean livemode;
-        public Integer pendingWebhooks;  // 3
-        public Request request;
-        public String type;  // invoice.created
-    }
-
-    global class Data {
-        public ClassObject eventObject;
-    }
+        // Deserialize JSON into a Map
+        Map<String, Object> payload = (Map<String, Object>) JSON.deserializeUntyped(requestBody);
         
-    global class ClassObject {
-        public String id;  // in_1PJQrBG2cXJyd3VGUKKlSPUH
-        public Integer amountDue;  // 0
-        public Integer amountPaid;  // 0
-        public String customer;  // cus_Q9kLf4CH3NyPMh
-        public String customerEmail;  // jonsadams@icloud.com
-        public String customerName;  // Jonathan Adams
-    }
+        // Extract event type
+        String eventType = (String) payload.get('type');
+        System.debug('Invoice Type: ' + eventType);
+        
+        // Extract data object
+        Map<String, Object> data = (Map<String, Object>) payload.get('data');
+        Map<String, Object> invoiceObject = (Map<String, Object>) data.get('object');
+        
+        // Extract required fields
+        String invoiceId = (String) invoiceObject.get('id');
+        Integer amountPaid = (Integer) invoiceObject.get('amount_paid');
+        Integer amountDue = (Integer) invoiceObject.get('amount_due');
+        String customerName = (String) invoiceObject.get('customer_name');
+        String customerEmail = (String) invoiceObject.get('customer_email');
+        
+        System.debug('Invoice ID: ' + invoiceId);
 
-    global class Request {
-        public String id;  // req_1E8fQkUqg1xwr3
-        public String idempotencyKey;  // i5Sdn
+        if (eventType == 'invoice.created') {
+            Stripe_Invoice__c newInvoice = new Stripe_Invoice__c();
+            newInvoice.Name = 'First Invoice';
+            newInvoice.Stripe_ID__c = invoiceId;
+            newInvoice.Amount_Paid__c = amountPaid;
+            newInvoice.Amount_Due__c = amountDue;
+            newInvoice.Customer_Name__c = customerName;
+            newInvoice.Customer_Email__c = customerEmail;
+            insert newInvoice;
+        }
     }
 }
