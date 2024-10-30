@@ -1,9 +1,9 @@
 public class SalesRecord {
-    public Date saleDate;
-    public Decimal saleAmount = 0;
+    public String salespersonName ='';
+    public Integer saleAmount = 0;
 
-    public SalesRecord(Date sDate, Decimal sAmount){
-        saleDate = sDate;
+    public SalesRecord(String sName, Integer sAmount){
+        salespersonName = sName;
         saleAmount = sAmount;
     }
 }
