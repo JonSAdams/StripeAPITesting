@@ -14,18 +14,52 @@
             </thead>
             <tbody>
               <tr>
-                <td>Jonathan</td>
-                <td>Manager</td>
-                <td>jonathanadams@inspirebrand.com</td>
-                <td>(770) 533-2522</td>
-                <td>Foundation</td>
+                <td>{user1.Name}</td>
+                <td>{user1.Title}</td>
+                <td>{user1.Username}</td>
+                <td>{user1.Phone}</td>
+                <td>{user1.Department}</td>
               </tr>
+              <tr>
+                <td>{user2.Name}</td>
+                <td>{user2.Title}</td>
+                <td>{user2.Username}</td>
+                <td>{user2.Phone}</td>
+                <td>{user2.Department}</td>
+              </tr>
+             <tr>
+                <td>{user3.Name}</td>
+                <td>{user3.Title}</td>
+                <td>{user3.Username}</td>
+                <td>{user3.Phone}</td>
+                <td>{user3.Department}</td>
+              </tr>
+              <tr>
+                <td>{user4.Name}</td>
+                <td>{user4.Title}</td>
+                <td>{user4.Username}</td>
+                <td>{user4.Phone}</td>
+                <td>{user4.Department}</td>
+               </tr> 
             </tbody>
             <tfoot>
               <tr>
-                <td colspan="5">Total number of users: 1</td>
+                <td colspan="5">Total number of users: {numOFUsers}</td>
               </tr>
             </tfoot>
           </table>
+    </div>
+    <div>
+        <h1>Unique Departments in the Company</h1>
+        <ul>
+            <li>Sales</li>
+            <li>Marketing</li>
+            <li>Human Resources</li>
+            <li>Support</li>
+            <li>IT</li>
+            <li>Operations</li>
+            <li>Facilities</li>
+            <li>Finance</li>
+        </ul>
     </div>
 </template>
