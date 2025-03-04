@@ -1,65 +1,62 @@
 <template>
-    <h1>Salesforce User List</h1>
-    <br>
-    <div class="background">
-        <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Title</th>
-                <th>Username</th>
-                <th>Phone</th>
-                <th>Department</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{user1.Name}</td>
-                <td>{user1.Title}</td>
-                <td>{user1.Username}</td>
-                <td>{user1.Phone}</td>
-                <td>{user1.Department}</td>
-              </tr>
-              <tr>
-                <td>{user2.Name}</td>
-                <td>{user2.Title}</td>
-                <td>{user2.Username}</td>
-                <td>{user2.Phone}</td>
-                <td>{user2.Department}</td>
-              </tr>
-             <tr>
-                <td>{user3.Name}</td>
-                <td>{user3.Title}</td>
-                <td>{user3.Username}</td>
-                <td>{user3.Phone}</td>
-                <td>{user3.Department}</td>
-              </tr>
-              <tr>
-                <td>{user4.Name}</td>
-                <td>{user4.Title}</td>
-                <td>{user4.Username}</td>
-                <td>{user4.Phone}</td>
-                <td>{user4.Department}</td>
-               </tr> 
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="5">Total number of users: {numOFUsers}</td>
-              </tr>
-            </tfoot>
-          </table>
-    </div>
-    <div>
-        <h1>Unique Departments in the Company</h1>
-        <ul>
-            <li>Sales</li>
-            <li>Marketing</li>
-            <li>Human Resources</li>
-            <li>Support</li>
-            <li>IT</li>
-            <li>Operations</li>
-            <li>Facilities</li>
-            <li>Finance</li>
-        </ul>
-    </div>
+    <lightning-card title="Salesforce User List">
+        <div class="slds-m-left_small">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                  <tr class="slds-line-height_reset">
+                    <th class="slds-truncate">Name</th>
+                    <th class="slds-truncate">Title</th>
+                    <th class="slds-truncate">Username</th>
+                    <th class="slds-truncate">Phone</th>
+                    <th class="slds-truncate">Department</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="slds-truncate">{user1.Name}</td>
+                    <td class="slds-truncate">{user1.Title}</td>
+                    <td class="slds-truncate">{user1.Username}</td>
+                    <td class="slds-truncate">{user1.Phone}</td>
+                    <td class="slds-truncate">{user1.Department}</td>
+                  </tr>
+                  <tr>
+                    <td class="slds-truncate">{user2.Name}</td>
+                    <td class="slds-truncate">{user2.Title}</td>
+                    <td class="slds-truncate">{user2.Username}</td>
+                    <td class="slds-truncate">{user2.Phone}</td>
+                    <td class="slds-truncate">{user2.Department}</td>
+                  </tr>
+                 <tr>
+                    <td class="slds-truncate">{user3.Name}</td>
+                    <td class="slds-truncate">{user3.Title}</td>
+                    <td class="slds-truncate">{user3.Username}</td>
+                    <td class="slds-truncate">{user3.Phone}</td>
+                    <td class="slds-truncate">{user3.Department}</td>
+                  </tr>
+                  <tr>
+                    <td class="slds-truncate">{user4.Name}</td>
+                    <td class="slds-truncate">{user4.Title}</td>
+                    <td class="slds-truncate">{user4.Username}</td>
+                    <td class="slds-truncate">{user4.Phone}</td>
+                    <td class="slds-truncate">{user4.Department}</td>
+                   </tr> 
+                </tbody>
+              </table>
+        </div>
+        <br>
+        <div>
+            <h1 >Unique Departments in the Company</h1>
+            <ul class="slds-list_dotted">
+                <li>Sales</li>
+                <li>Marketing</li>
+                <li>Human Resources</li>
+                <li>Support</li>
+                <li>IT</li>
+                <li>Operations</li>
+                <li>Facilities</li>
+                <li>Finance</li>
+            </ul>
+        </div>
+    </lightning-card>
+   
 </template>
